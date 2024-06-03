@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "dotenv": "^16.4.5",
-    "vue": "^3.4.21"
+    "vue": "^3.4.21",
+    "vue3-audio-player": "^1.0.7"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
