@@ -2,8 +2,8 @@
     <div class="flex flex-col lg:flex-row justify-between items-center lg:justify-center h-screen p-4 gap-6">
         <div class="flex-grow-0 flex flex-col items-center justify-center w-full gap-4 px-4"
             :class="{ 'lg:border-r-2 lg:border-dashed lg:border-gray-300': !isLoading && audioUrl }">
-            <h1 class="relative text-4xl flex flex-row items-center justify-center flex-wrap">
-                <svg t="1717430346185" class="flashing mr-2 mb-[-3px]" viewBox="0 0 1024 1024" version="1.1"
+            <h1 class="relative text-4xl flex flex-row items-center justify-center">
+                <svg t="1717430346185" class="flashing mr-2 h-full" viewBox="0 0 1024 1024" version="1.1"
                     xmlns="http://www.w3.org/2000/svg" p-id="8066" width="26" height="26">
                     <path
                         d="M950.848 512q0 119.424-58.848 220.288t-159.712 159.712-220.288 58.848-220.288-58.848-159.712-159.712-58.848-220.288 58.848-220.288 159.712-159.712 220.288-58.848 220.288 58.848 159.712 159.712 58.848 220.288z"
@@ -63,7 +63,9 @@ const escapeRegExp = (string: string): string => {
 
 const convertTextFormat = (text: string): string => {
     const conversions: Conversion[] = [
-        { target: '，', replacement: ' [uv_break] ' },
+        { target: '，', replacement: ',' },
+        { target: '.', replacement: ' [uv_break] ' },
+        { target: ',', replacement: ' [uv_break] ' },
         { target: '。', replacement: ' [uv_break] ' },
         { target: '+', replacement: ' [uv_break] ' },
     ];
