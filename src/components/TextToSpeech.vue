@@ -1,26 +1,26 @@
 <template>
 	<div
-		class="flex flex-col lg:flex-row justify-between items-center lg:justify-center h-screen p-4 gap-6"
+		class="flex flex-col lg:flex-row justify-center items-center h-screen p-4 gap-6 bg-gray-200"
 	>
 		<div
-			class="flex-grow-0 flex flex-col items-center justify-center w-full gap-4 px-4"
+			class="flex-grow-0 flex flex-col items-center justify-center w-full max-w-lg gap-4 px-4"
 			:class="{
 				'lg:border-r-2 lg:border-dashed lg:border-gray-300':
 					!isLoading && audioUrl,
 			}"
 		>
-			<h1
+			<div
 				class="relative text-4xl flex h-7 flex-row items-center justify-center"
 			>
 				<div
-					class="pulse-animation relative w-7 h-7 rounded-full bg-black -bottom-[2px]"
+					class="pulse-animation relative w-7 h-7 rounded-full bg-black"
 					:class="{ 'mr-2': displayText }"
 				></div>
 				<span v-if="displayText" class="typing-effect">{{
 					displayText
 				}}</span>
-			</h1>
-			<div class="relative w-full max-w-lg">
+			</div>
+			<div class="relative w-full">
 				<textarea
 					v-model="text"
 					class="relative w-full h-full p-2 border-0 outline-none rounded shadow-md min-h-10 max-h-[50vh] focus:ring-4 focus:ring-gray-100 transition-all duration-300"
@@ -38,7 +38,7 @@
 
 			<div
 				@click="convertTextToSpeech"
-				class="flex items-center justify-center bg-gray-900 hover:bg-gray-800 text-white px-2 py-1 h-10 rounded shadow-md w-full max-w-lg select-none transition-colors duration-300"
+				class="flex items-center justify-center bg-gray-900 hover:bg-gray-800 text-white px-2 py-1 h-10 rounded shadow-md w-full select-none transition-colors duration-300"
 				:class="{
 					'cursor-not-allowed opacity-50': isLoading,
 					'cursor-pointer': !isLoading,
@@ -57,7 +57,7 @@
 				<div v-else class="text-md">点击生成</div>
 			</div>
 		</div>
-		<div v-if="!isLoading && audioUrl" class="w-full gap-4 px-4">
+		<div v-if="!isLoading && audioUrl" class="w-full max-w-lg gap-4 px-4">
 			<transition name="fade" mode="out-in">
 				<div
 					key="audio"
@@ -223,6 +223,13 @@
 
 	onMounted(() => {
 		typeText();
+	});
+
+	defineProps({
+		class: {
+			type: String,
+			default: "",
+		},
 	});
 </script>
 
